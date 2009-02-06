@@ -1,0 +1,45 @@
+8
+
+dir
+335
+https://mozmill.googlecode.com/svn/trunk/mozmill/extension/content/jquery
+https://mozmill.googlecode.com/svn
+
+
+
+2009-02-04T23:55:05.941562Z
+335
+adam.christian
+
+
+svn:special svn:externals svn:needs-lock
+
+theme
+dir
+
+jquery-1.3.1.js
+file
+
+
+
+
+2009-01-30T14:58:40.000000Z
+1ce22e168dd9504ec723f20446d1d862
+2009-02-04T23:55:05.941562Z
+335
+adam.christian
+has-props
+
+jquery.ui.all.js
+file
+
+
+
+
+2009-01-30T14:58:40.000000Z
+d1f90023ff8990bda287b2d8dc6b4a21
+2009-02-04T23:55:05.941562Z
+335
+adam.christian
+has-props
+

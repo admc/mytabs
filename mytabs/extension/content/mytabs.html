@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>MyTabs</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="adam">
+	<!-- Date: 2009-01-30 -->
+	<link type="text/css" href="js/jquery/theme/ui.all.css" rel="Stylesheet" />
+	<script src="js/jquery/jquery-1.3.1.js"></script>
+	<script src="js/jquery/jquery.ui.all.js"></script>
+  <script src="js/mytabs.js"></script>
+  <style type="text/css">
+		body{ font: 10px Verdana, sans-serif;}
+		/*demo page css*/
+		#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+		#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+		ul#icons {margin: 0; padding: 0;}
+		ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+		ul#icons span.ui-icon {float: left; margin: 0 4px;}
+	</style>
+</head>
+<body style="margin:0px;padding:0px">
+	<script type="text/javascript">
+  	$(function() {
+  		$("#tabs").tabs();
+  		$("#dialogTabs").tabs();
+  		$("#newDialog").dialog({
+  		  autoOpen: false,
+        height: 250,
+        width: 400,
+        modal:true,
+        resizable:false,
+        overlay: { 
+            opacity: 0.5, 
+            background: "black" 
+        },
+        buttons: { 
+         "Cancel": function() { 
+             jQuery(this).dialog("close"); 
+         },
+         "Save": function() { 
+             mytabs.addURL($('#name')[0].value, $('#url')[0].value);
+             jQuery(this).dialog("close"); 
+          }
+        }
+      });
+  	});
+  </script>
+
+<div id="tabs" style="position:absolute;width:98%;height:97%;overflow:hidden;border-left:1px solid white;border-right:1px solid white;border-top:1px solid white;">
+	<ul>
+		<li><a href="#tabs-1">Welcome</a></li>
+		<li><a href="#tabs-2">Overview</a></li>
+		<li><a href="#tabs-3">Settings</a></li>
+	</ul>
+	<div id="tabs-1">
+    <p><b>MyTabs</b> is a designed for the person that uses there browser tabs as <b>micro-bookmarks</b>. When the browser doesn't have a specific set of resources available at all times, you start feeling like something is missing. Not only do you care about having those <b>resources open in a tab</b>, but you also like them in a <b>certain state</b> (ie. logged in to..).</p>
+    <p>You should now have everything you need to create all those tabs when Firefox opens, but also to create new tabs and build the steps required to get you back where you want to be.<br><br> <b>Enjoy!</b></p>
+    <center style="font-weight:bold;font-size:18px;">
+      <button class="ui-state-default ui-corner-all">Build Tabs</button>
+      <button class="ui-state-default ui-corner-all">Close Tabs</button>
+    </center>
+	</div>
+	<div id="tabs-2">
+    <div id="entries" style="border:1px solid #aaa;width:98%;height:200px;overflow:auto;font:11px arial;">
+    </div><br>
+    <center>
+      <button onclick='$("#newDialog").dialog("open")' class="ui-state-default ui-corner-all">New</button>
+    </center>
+	</div>
+	<div id="tabs-3">
+	</div>
+	
+	<div id="newDialog" title="New Tab">
+    <div id="dialogTabs" style="font-size:9px;">
+    	<ul>
+    		<li><a href="#dtabs-1">Profile</a></li>
+    		<li><a href="#dtabs-2">Script</a></li>
+    	</ul>
+    	<div id="dtabs-1" style="font-size:11px;">
+        <br>
+      	<table>
+          <tr><td><b>Name:</b> </td><td><input size=25 type="text" name="name" id="name"/></td></tr>
+          <tr><td><b>URL:</b> </td><td>http://<input size=30 type="text" name="url" id="url"/></td></tr>
+        </table>
+        <br>
+        Open on startup? <input type=checkbox name="onopen">
+    	</div>
+    	<div id="dtabs-2">
+        <textarea id="script" rows=8 cols=60></textarea>
+    	</div>
+    </div>
+
+  </div>
+  
+</body>
+</html>

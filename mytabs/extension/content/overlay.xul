@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://mytabs/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://mytabs/locale/overlay.dtd">
+<overlay id="mytabs-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="chrome://mytabs/content/overlay.js"/>
+  
+  <keyset>
+    <key id="open-mt" modifiers="accel shift" key="y" oncommand="mytabs.go(event);"/>
+  </keyset>
+  
+  <menupopup id="menu_ToolsPopup">
+    <menuitem key="open-mt" id="mytabs-mytabs" label="&mytabs;" 
+              oncommand="mytabs.go(event);"/>
+  </menupopup>
+</overlay>
