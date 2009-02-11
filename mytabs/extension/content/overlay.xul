@@ -6,11 +6,11 @@
   <script src="chrome://mytabs/content/overlay.js"/>
   
   <keyset>
-    <key id="open-mt" modifiers="accel shift" key="y" oncommand="mytabs.go(event);"/>
+    <key id="open-mt" modifiers="accel shift" key="y" oncommand="MyTabs.go(event);"/>
   </keyset>
   
   <menupopup id="menu_ToolsPopup">
     <menuitem key="open-mt" id="mytabs-mytabs" label="&mytabs;" 
-              oncommand="mytabs.go(event);"/>
+              oncommand="MyTabs.go(event);"/>
   </menupopup>
 </overlay>

@@ -13,11 +13,12 @@ var mytabs = new function(){
     if (mytabs.getState()){
       for (var i=0;i<mytabs.entriesArr.length;i++){
         mytabs.addURL(mytabs.entries[mytabs.entriesArr[i]]);
+        
         //if it's to get run on open
-        /*if (mytabs.entries[mytabs.entriesArr[i]].onopen){
+        if (mytabs.entries[mytabs.entriesArr[i]].onopen){
           mytabs.run(mytabs.entriesArr[i]);
         }
-      }*/
+      }
     }
   };
   
@@ -59,7 +60,7 @@ var mytabs = new function(){
   };
   
   this.del = function(key){
-    $('#'+key)[0].parentNode.removeChild($('#'+key)[0]);
+    document.getElementById(key).parentNode.removeChild(document.getElementById(key));
     delete mytabs.entries[key];
     var newEntArr = [];
     //get rid of undefined in entriesArr
@@ -95,10 +96,12 @@ var mytabs = new function(){
     }
   };
   
-  this.addURL = function(entObj){
+  this.addToDB = function(entObj){
     mytabs.entries[entObj.name] = entObj;
     mytabs.entriesArr.push(entObj.name);
-    
+  };
+  
+  this.addURL = function(entObj){
     var newDiv = document.createElement('div');
     var tbl = document.createElement('table');
     tbl.style.width = "100%";
@@ -144,6 +147,5 @@ var mytabs = new function(){
     newDiv.id = entObj.name;
     
     document.getElementById('entries').appendChild(newDiv);
-    mytabs.storeState();
   };
 };

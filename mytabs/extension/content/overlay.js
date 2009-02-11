@@ -20,7 +20,7 @@ function getWindowByTitle(title) {
   }
 };
 
-var mytabs = {
+var MyTabs = {
   onLoad: function() {
     // initialization code
     this.initialized = true;
@@ -36,6 +36,4 @@ var mytabs = {
   }
 };
 
-window.addEventListener("load", function(e) { mytabs.onLoad(e); }, false);
-
-var boom = 'yayer';
+window.addEventListener("load", function(e) { MyTabs.onLoad(e); }, false);

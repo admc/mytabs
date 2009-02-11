@@ -22,7 +22,7 @@
 		ul#icons span.ui-icon {float: left; margin: 0 4px;}
 	</style>
 </head>
-<body style="margin:0px;padding:0px">
+<body style="margin:0px;padding:0px" onload="mytabs.init();">
 	<script type="text/javascript">
   	$(function() {
   		$("#tabs").tabs();
@@ -55,6 +55,9 @@
              entObj.onopen = onopen.checked;
              
              mytabs.addURL(entObj);
+             mytabs.addToDB(entObj);
+             mytabs.storeState();
+             
              jQuery(this).dialog("close");
              
              //reset
@@ -90,7 +93,6 @@
     </center>
 	</div>
 	<div id="tabs-3">
-	  <button onclick='mytabs.init();' class="ui-state-default ui-corner-all">Init</button>
 	</div>
 	
 	<div id="newDialog" title="New Tab">
@@ -115,13 +117,24 @@
 
   </div>
   <script>
-    $('#name')[0].onblur = function(e){
-      if ($('#url')[0].value.indexOf(".com") == -1){
-        $('#url')[0].value += ".com";
+    // $('#name')[0].onblur = function(e){
+    //   if ($('#url')[0].value.indexOf(".com") == -1){
+    //     $('#url')[0].value += ".com";
+    //   }
+    // };
+    // 
+    // $('#name')[0].onfocus = function(e){
+    //     $('#name')[0].value = "";
+    // };
+    
+    $('#url')[0].onkeyup = function(e){
+      if ($('#url')[0].value == ""){
+        $('#url')[0].value = "http://";
       }
     };
     
     $('#name')[0].onkeypress = function(e){
+      
       function alpha(e) {
         if ((e.charCode > 96) && (e.charCode < 123)){
           return true;
@@ -129,20 +142,32 @@
         else if ((e.charCode > 64) && (e.charCode < 91)){
           return true;
         }
-        else if ((e.charCode > 47) && (e.charCode < 58)){
+        else if ((e.charCode > 44) && (e.charCode < 58)){
           return true;
         }
         return false;
+      };
+      
+      if (alpha(e)){
+        $('#url')[0].value += String.fromCharCode(e.charCode);
       }
+      
+      var v = new RegExp(); 
+      v.compile("^[A-Za-z]+://[A-Za-z0-9-_]+\\.[A-Za-z0-9-_%&\?\/.=]+$");
+      
+      if (v.test($('#url')[0].value)) { 
+        return;
+      }
+      
       //delete from url box if the last char is an acceptable char
       if (e.keyCode == 8){
+        if ($('#name')[0].value == ""){
+          return;
+        }
         var toDel = $('#name')[0].value[$('#name')[0].value.length-1];
         if (alpha({charCode: String.charCodeAt(toDel)})){
           $('#url')[0].value = $('#url')[0].value.substr(0, $('#url')[0].value.length-1);
         }
-      }
-      if (alpha(e)){
-        $('#url')[0].value += String.fromCharCode(e.charCode);
       }
     };
   </script>

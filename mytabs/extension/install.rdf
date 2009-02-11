@@ -3,10 +3,10 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
    <Description about="urn:mozilla:install-manifest">
      <em:id>adam@adamchristian.com</em:id>
-     <em:name>mytabs</em:name>
+     <em:name>MyTabs</em:name>
      <em:version>0.1</em:version>
      <em:creator>Adam Christian</em:creator>
-     <em:description>mytabs set document.domain to itself</em:description>
+     <em:description>MyTabs is a micro bookmarking tool to help you set your tabs straight.</em:description>
      <em:targetApplication>
        <!-- Firefox -->
        <Description>
