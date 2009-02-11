@@ -1,3 +1,6 @@
+var controller = {}; Components.utils.import('resource://mytabs/modules/controller.js', controller);
+var elementslib = {}; Components.utils.import('resource://mytabs/modules/elementslib.js', elementslib);
+
 Components.utils.import("resource://gre/modules/JSON.jsm");
 var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
                           .getService(Components.interfaces.nsIPrefBranch);
@@ -45,7 +48,8 @@ var mytabs = new function(){
     var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
                .getService(Components.interfaces.nsIWindowMediator);
 
-    var url = mytabs.entries[key].url;    
+    var url = mytabs.entries[key].url;
+    var script = mytabs.entries[key].script;     
     var w = wm.getMostRecentWindow('navigator:browser');
     try {
       var wObj = w.window;
@@ -53,6 +57,17 @@ var mytabs = new function(){
       var tabWin = w.window.gBrowser.getBrowserForTab(newTab);
       w.window.gBrowser.selectedTab = newTab;
       mytabs.openTabs.push(tabWin);
+     
+      var runit = function() { 
+        var tab = new controller.MozMillController(tabWin.contentDocument.defaultView);
+        var doc = tabWin.contentDocument;
+        var win = doc.defaultView;
+        eval(script);
+        tabWin.removeEventListener("load", runit, true);
+      }
+     
+      tabWin.addEventListener("load", runit, true);
+      
     }
     catch(err){
       var w = window.open(url);

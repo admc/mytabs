@@ -43,16 +43,19 @@
              $('#name')[0].value = "";
              $('#url')[0].value = "http://";
              $('#onopen')[0].checked = true;
+             $('#script')[0].value = "";
          },
          "Save": function() {
              var name = $('#name')[0];
              var url = $('#url')[0];
              var onopen = $('#onopen')[0];
+             var script = $('#script')[0];
              
              var entObj = {};
              entObj.name = name.value;
              entObj.url = url.value;
              entObj.onopen = onopen.checked;
+             entObj.script = script.value;
              
              mytabs.addURL(entObj);
              mytabs.addToDB(entObj);
@@ -64,6 +67,7 @@
              name.value = "";
              url.value = "http://";
              onopen.checked = true;
+             script.value = "";
           }
         }
       });
@@ -88,7 +92,8 @@
     <div id="entries" style="border:1px solid #aaa;width:98%;height:200px;overflow:auto;font:11px arial;">
     </div><br>
     <center>
-      <button onclick='$("#newDialog").dialog("open");$("#name")[0].focus();' class="ui-state-default ui-corner-all">New</button>
+      <button onclick='$("#newDialog").dialog("open");$("#dialogTabs").tabs("select", 0);$("#name")[0].focus();' 
+        class="ui-state-default ui-corner-all">New</button>
       <button onclick='mytabs.clear();' class="ui-state-default ui-corner-all">Clear</button>
     </center>
 	</div>
@@ -117,15 +122,6 @@
 
   </div>
   <script>
-    // $('#name')[0].onblur = function(e){
-    //   if ($('#url')[0].value.indexOf(".com") == -1){
-    //     $('#url')[0].value += ".com";
-    //   }
-    // };
-    // 
-    // $('#name')[0].onfocus = function(e){
-    //     $('#name')[0].value = "";
-    // };
     
     $('#url')[0].onkeyup = function(e){
       if ($('#url')[0].value == ""){
