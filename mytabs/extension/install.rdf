@@ -7,6 +7,7 @@
      <em:version>0.1</em:version>
      <em:creator>Adam Christian</em:creator>
      <em:description>MyTabs is a micro bookmarking tool to help you set your tabs straight.</em:description>
+     <em:iconURL>chrome://mytabs/content/mytabs.png</em:iconURL>
      <em:targetApplication>
        <!-- Firefox -->
        <Description>
