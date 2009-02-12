@@ -25,6 +25,12 @@
 <body style="margin:0px;padding:0px" onload="mytabs.init();">
 	<script type="text/javascript">
   	$(function() {
+  	  $("#entries").sortable({
+  	    items: "div", 
+  	    axis: "y",
+  	    change: function(event, ui) { alert('changed'); }
+  	  });
+  	  
   		$("#tabs").tabs();
   		$("#dialogTabs").tabs();
   		$("#newDialog").dialog({

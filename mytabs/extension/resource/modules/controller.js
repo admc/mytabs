@@ -295,7 +295,11 @@ MozMillController.prototype.type = function (el, text){
       events.triggerKeyEvent(element, 'keyup', s.charAt(c), true, false,false, false,false);
     } catch(err){};
   }
-   
+   //if for some reason the key events don't do the typing
+   if (element.value != s){
+     element.value = s;
+   }
+    
   // DGF this used to be skipped in chrome URLs, but no longer.  Is xpcnativewrappers to blame?
   //Another wierd chrome thing?
   try {
