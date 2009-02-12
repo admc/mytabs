@@ -12,15 +12,20 @@ var mytabs = new function(){
   
   this.init = function(){
     mytabs.initialized = true;
+        
     //if there is a state to restore
     if (mytabs.getState()){
       for (var i=0;i<mytabs.entriesArr.length;i++){
         mytabs.addURL(mytabs.entries[mytabs.entriesArr[i]]);
         
-        //if it's to get run on open
-        if (mytabs.entries[mytabs.entriesArr[i]].onopen){
-          mytabs.run(mytabs.entriesArr[i]);
+        if ($("#allauto")[0].checked){
+          window.open('http://wiki.github.com/admc/mytabs');
+          //if it's to get run on open
+          if (mytabs.entries[mytabs.entriesArr[i]].onopen){
+            mytabs.run(mytabs.entriesArr[i]);
+          }
         }
+
       }
     }
   };
@@ -29,8 +34,13 @@ var mytabs = new function(){
     try {
       var eJSON = prefManager.getCharPref("mytabs.entries");
       var eaJSON = prefManager.getCharPref("mytabs.entriesArr");
+      var allauto = prefManager.getCharPref("mytabs.allauto");
       mytabs.entries = JSON.fromString(eJSON);
       mytabs.entriesArr = JSON.fromString(eaJSON);
+      
+      if (allauto == "true"){ $("#allauto")[0].checked = true; }
+      else{ $("#allauto")[0].checked = false; }
+      
       return true;
     }
     catch(err){
@@ -42,6 +52,8 @@ var mytabs = new function(){
   this.storeState = function(){
     prefManager.setCharPref("mytabs.entries", JSON.toString(mytabs.entries));
     prefManager.setCharPref("mytabs.entriesArr", JSON.toString(mytabs.entriesArr));
+    var allauto = $("#allauto")[0].checked;
+    prefManager.setCharPref("mytabs.allauto", String(allauto));    
   };
   
   this.run = function(key){
