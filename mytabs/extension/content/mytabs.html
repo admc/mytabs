@@ -28,7 +28,16 @@
   	  $("#entries").sortable({
   	    items: "div", 
   	    axis: "y",
-  	    change: function(event, ui) { alert('changed'); }
+  	    update: function(event, ui) { 
+  	      //rebuild the entries arr ordering and store it
+  	      mytabs.entriesArr = [];
+  	      for (var i = 0;i < $('#entries').children().length; i++){
+  	        if ($('#entries').children()[i].id != ""){
+  	          mytabs.entriesArr.push($('#entries').children()[i].id);
+  	        }
+  	      }
+  	      mytabs.storeState();
+  	    }
   	  });
   	  
   		$("#tabs").tabs();
