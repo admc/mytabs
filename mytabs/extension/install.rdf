@@ -2,7 +2,7 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
    <Description about="urn:mozilla:install-manifest">
-     <em:id>adam@adamchristian.com</em:id>
+     <em:id>mytabs@adamchristian.com</em:id>
      <em:name>MyTabs</em:name>
      <em:version>0.1</em:version>
      <em:creator>Adam Christian</em:creator>
@@ -16,5 +16,7 @@
          <em:maxVersion>3.2a1pre</em:maxVersion>
        </Description>
      </em:targetApplication>
+     <em:iconURL>chrome://mytabs/content/mytabs.png</em:iconURL>
+		 <em:optionsURL>chrome://mytabs/content/preferences.xul</em:optionsURL>
    </Description>
 </RDF>
