@@ -47,7 +47,13 @@
         height: 250,
         width: 400,
         modal:true,
-        resizable:false,
+        resizable:true,
+        resize: function(event, ui) { 
+          var h = $("#newDialog").css('height');
+          h.replace('px','');
+          var hInt = parseInt(h) - 100;
+          $('#script').css('height', hInt+'px');
+        },
         overlay: { 
             opacity: 0.5, 
             background: "black" 
@@ -86,6 +92,12 @@
           }
         }
       });
+      
+      var h = $("#newDialog").css('height');
+      h.replace('px','');
+      var hInt = parseInt(h) - 100;
+      $('#script').css('height', hInt+'px');
+      
   	});
   </script>
 
@@ -119,7 +131,7 @@
 	</div>
 	
 	<div id="newDialog" title="New Tab">
-    <div id="dialogTabs" style="font-size:9px;">
+    <div id="dialogTabs" style="font-size:9px;height:90%">
     	<ul>
     		<li><a href="#dtabs-1">Profile</a></li>
     		<li><a href="#dtabs-2">Script</a></li>
@@ -134,7 +146,7 @@
         Open on startup? <input type=checkbox name="onopen" id="onopen" checked>
     	</div>
     	<div id="dtabs-2">
-        <textarea id="script" rows=8 cols=60></textarea>
+        <textarea id="script" style="height:75px;width:98%"></textarea>
     	</div>
     </div>
 

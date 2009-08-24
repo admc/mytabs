@@ -31,7 +31,7 @@ var MyTabs = {
       mt.focus();
     }
     else {
-      var w = window.open("chrome://mytabs/content/mytabs.html", "", "chrome,centerscreen,height=300,width=500"); 
+      var w = window.open("chrome://mytabs/content/mytabs.html", "", "chrome,centerscreen,height=300,width=500,resizable"); 
     }
   }
 };
@@ -69,7 +69,7 @@ var Overlay = {
         // The example below loads a page by opening a new tab.
         // Useful for loading a mini tutorial
         window.setTimeout(function(){
-          gBrowser.selectedTab = gBrowser.addTab("about:mytabs");
+          gBrowser.selectedTab = gBrowser.addTab("about:MyTabs");
         }, 1500); //Firefox 2 fix - or else tab will get closed
 				
       }		

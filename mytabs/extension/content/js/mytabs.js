@@ -36,8 +36,8 @@
 
 var controller = {}; Components.utils.import('resource://mytabs/modules/controller.js', controller);
 var elementslib = {}; Components.utils.import('resource://mytabs/modules/elementslib.js', elementslib);
-
-Components.utils.import("resource://gre/modules/JSON.jsm");
+// 
+//Components.utils.import("resource://gre/modules/JSON.jsm");
 var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
                           .getService(Components.interfaces.nsIPrefBranch);
                           
@@ -110,7 +110,12 @@ var mytabs = new function(){
         var tab = new controller.MozMillController(tabWin.contentDocument.defaultView);
         var doc = tabWin.contentDocument;
         var win = doc.defaultView;
-        eval(script);
+        try {
+          eval(script);
+        }
+        catch(err){
+          alert('There was a problem with the provided script! \n\n' + err.lineNumber + '\n' + err.fileName + '\n' + err.message );
+        }
         tabWin.removeEventListener("load", runit, true);
       }
      
