@@ -71,8 +71,8 @@ var mytabs = new function(){
       var eJSON = prefManager.getCharPref("mytabs.entries");
       var eaJSON = prefManager.getCharPref("mytabs.entriesArr");
       var allauto = prefManager.getCharPref("mytabs.allauto");
-      mytabs.entries = JSON.fromString(eJSON);
-      mytabs.entriesArr = JSON.fromString(eaJSON);
+      mytabs.entries = JSON.parse(eJSON);
+      mytabs.entriesArr = JSON.parse(eaJSON);
       
       if (allauto == "true"){ $("#allauto")[0].checked = true; }
       else{ $("#allauto")[0].checked = false; }
@@ -86,8 +86,8 @@ var mytabs = new function(){
   };
   
   this.storeState = function(){
-    prefManager.setCharPref("mytabs.entries", JSON.toString(mytabs.entries));
-    prefManager.setCharPref("mytabs.entriesArr", JSON.toString(mytabs.entriesArr));
+    prefManager.setCharPref("mytabs.entries", JSON.stringify(mytabs.entries));
+    prefManager.setCharPref("mytabs.entriesArr", JSON.stringify(mytabs.entriesArr));
     var allauto = $("#allauto")[0].checked;
     prefManager.setCharPref("mytabs.allauto", String(allauto));    
   };
