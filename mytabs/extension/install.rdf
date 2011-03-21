@@ -4,7 +4,7 @@
    <Description about="urn:mozilla:install-manifest">
      <em:id>mytabs@adamchristian.com</em:id>
      <em:name>MyTabs</em:name>
-     <em:version>2.0</em:version>
+     <em:version>3.0</em:version>
      <em:creator>Adam Christian</em:creator>
      <em:description>MyTabs is a micro bookmarking tool to help you set your tabs straight.</em:description>
      <em:iconURL>chrome://mytabs/content/mytabs.png</em:iconURL>
